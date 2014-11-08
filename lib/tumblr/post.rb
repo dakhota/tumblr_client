@@ -3,7 +3,7 @@ require 'mime/types'
 module Tumblr
   module Post
 
-    STANDARD_POST_OPTIONS = [:state, :publish_on, :tags, :tweet, :date, :markdown, :slug, :format]
+    STANDARD_POST_OPTIONS = [:state, :publish_on, :source_url, :source_title, :tags, :tweet, :date, :markdown, :slug, :format]
     DATA_POST_TYPES = [:audio, :video, :photo]
     VALID_POST_TYPES = DATA_POST_TYPES + [:quote, :text, :link, :chat]
 
