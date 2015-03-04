@@ -10,15 +10,15 @@ module Tumblr
       default_options = {
         :headers => {
           :accept => 'application/json',
-          :user_agent => "tumblr_client (ruby) - #{Tumblr::VERSION}"
+          :user_agent => "tumblr_client/#{Tumblr::VERSION}"
         },
-        :url => "http://#{api_host}/"
+        :url => "#{api_scheme}://#{api_host}/"
       }
 
       client = Faraday.default_adapter
 
-      Faraday.new("http://#{api_host}/", default_options.merge(options)) do |conn|
-        data = { :api_host => api_host }.merge(credentials)
+      Faraday.new(default_options.merge(options)) do |conn|
+        data = { :api_host => api_host, :ignore_extra_keys => true}.merge(credentials)
         unless credentials.empty?
           conn.request :oauth, data
         end
